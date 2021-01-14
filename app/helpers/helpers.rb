@@ -1,11 +1,11 @@
 class Helpers
 
-attr_accessor :current_user, :is_logged_in
-
-  def current_user
+def current_user
+    @current_user ||= User.find(session[:user_id]) if 
+    session[:user_id].present?
+ 
+ def logged_in?
+    !!current_user
   end
-
-  def is_logged_in
-  end 
-
+end
 end
